@@ -27,6 +27,7 @@ where
         Ok(())
     }
 
+    /// Initialise the display with default value
     pub fn init_display(&mut self) -> Result<(), E> {
         // turn the display off
         self.send_command(0xAE)?;
@@ -73,6 +74,25 @@ where
         // turn display on
         self.send_command(0xAF)?;
 
+        Ok(())
+    }
+
+    fn fill_screen_with_value(&mut self, value: u8) -> Result<(), E> {
+        for _ in 0..8 {
+            for _ in 0..127 {
+                self.send_data(value)?;
+            }
+        }
+        Ok(())
+    }
+
+    pub fn fill(&mut self) -> Result<(), E> {
+        self.fill_screen_with_value(0x00)?;
+        Ok(())
+    }
+
+    pub fn clear(&mut self) -> Result<(), E> {
+        self.fill_screen_with_value(0xFF)?;
         Ok(())
     }
 }
