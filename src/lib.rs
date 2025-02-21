@@ -96,7 +96,7 @@ where
 
         // update screen value
         for _ in 0..8 {
-            for _ in 0..127 {
+            for _ in 0..128 {
                 self.send_data(value)?;
             }
         }
