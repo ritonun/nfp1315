@@ -81,7 +81,7 @@ where
         // send proper command to reset screen
 
         // set the column addr range from 0 to 127
-        self.send_command(0x21)?;
+        self.send_command(0x20)?;
         self.send_command(0x01)?;
 
         // Column: addr, start, end
