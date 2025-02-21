@@ -58,7 +58,7 @@ where
         self.send_command(0x7F)?;
 
         // disable entire display on
-        self.send_command(0x4A)?;
+        self.send_command(0xA4)?;
 
         // set normal display
         self.send_command(0xA6)?;
@@ -78,6 +78,23 @@ where
     }
 
     fn fill_screen_with_value(&mut self, value: u8) -> Result<(), E> {
+        // send proper command to reset screen
+
+        // set the column addr range from 0 to 127
+        self.send_command(0x21)?;
+        self.send_command(0x01)?;
+
+        // Column: addr, start, end
+        self.send_command(0x21)?;
+        self.send_command(0x00)?;
+        self.send_command(0x7F)?; // 127
+
+        // Page: addr, start, end
+        self.send_command(0x22)?;
+        self.send_command(0x00)?;
+        self.send_command(0x07)?;
+
+        // update screen value
         for _ in 0..8 {
             for _ in 0..127 {
                 self.send_data(value)?;
