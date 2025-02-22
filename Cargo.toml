@@ -1,6 +1,6 @@
 [package]
 name = "nfp1315"
-version = "0.1.0"
+version = "1.0.0"
 edition = "2021"
 license = "MIT"
 description = "Library for the NFP1315-61A display (I2C SSD1306 driver)"

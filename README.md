@@ -47,6 +47,3 @@ match display.draw_text("Hello World", 50, 0) {
     Err(e) => //...
 }
 ```
-
-## To Do
-- [ ] Easy way to add custom icons
