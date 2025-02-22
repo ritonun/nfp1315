@@ -120,6 +120,7 @@ where
         Ok(())
     }
 
+    /// Write the same value to all pixel of the display
     fn fill_screen_with_value(&mut self, value: u8) -> Result<(), E> {
         // send proper command to reset screen
 
@@ -146,17 +147,20 @@ where
         Ok(())
     }
 
+    /// Fill the screen (White)
     pub fn fill(&mut self) -> Result<(), E> {
         self.fill_screen_with_value(0xFF)?;
         Ok(())
     }
 
+    /// Clear the screen (Black)
     pub fn clear(&mut self) -> Result<(), E> {
         self.fill_screen_with_value(0x00)?;
         Ok(())
     }
 
-    fn set_cursor(&mut self, mut col: u8, page: u8, len: u8) -> Result<(), E> {
+    /// Set the cursor for the start and end of the drawing zone
+    fn set_cursor(&mut self, col: u8, page: u8, len: u8) -> Result<(), E> {
         // set the column addr range from 0 to 127
         self.send_command(0x20)?;
         self.send_command(0x01)?;
@@ -174,6 +178,7 @@ where
         Ok(())
     }
 
+    /// Write a char on screen
     fn write_char(&mut self, c: char) -> Result<(), E> {
         let index = match c {
             'A'..'Z' => (c as u8 - b'A' + 1) as usize,
@@ -186,11 +191,12 @@ where
         for &byte in &FONT_5X8[index] {
             self.send_data(byte)?;
         }
-        //self.send_data(0x00)?;
+        //self.send_data(0x00)?; // to use if we want to espace the character by 1 pixel
 
         Ok(())
     }
 
+    /// Draw text on the screen, text wrap around the edges
     pub fn draw_text(&mut self, text: &str, mut col: u8, mut page: u8) -> Result<(), E> {
         // self.set_cursor(col, page, (text.len() * 5) as u8)?;
 
@@ -202,7 +208,6 @@ where
             self.set_cursor(col, page, 5)?;
             self.write_char(c)?;
             col += 5;
-            // self.set_cursor(col + 5, page)?;
         }
         Ok(())
     }
