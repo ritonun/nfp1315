@@ -42,6 +42,7 @@ const FONT_5X8: [[u8; 5]; 37] = [
     [0x26, 0x49, 0x49, 0x49, 0x3E], // 9
 ];
 
+/// Store a blocking I2C instance and the adress of the device
 pub struct SSD1306<I2C> {
     i2c: I2C,
     address: u8,
