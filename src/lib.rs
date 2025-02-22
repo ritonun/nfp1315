@@ -156,7 +156,7 @@ where
         Ok(())
     }
 
-    fn set_cursor(&mut self, col: u8, page: u8, len: u8) -> Result<(), E> {
+    fn set_cursor(&mut self, mut col: u8, page: u8, len: u8) -> Result<(), E> {
         // set the column addr range from 0 to 127
         self.send_command(0x20)?;
         self.send_command(0x01)?;
@@ -191,11 +191,17 @@ where
         Ok(())
     }
 
-    pub fn draw_text(&mut self, text: &str, col: u8, page: u8) -> Result<(), E> {
-        self.set_cursor(col, page, (text.len() * 5) as u8)?;
+    pub fn draw_text(&mut self, text: &str, mut col: u8, mut page: u8) -> Result<(), E> {
+        // self.set_cursor(col, page, (text.len() * 5) as u8)?;
 
         for c in text.chars() {
+            if col + 5 > 128 {
+                col = 0;
+                page += 1;
+            }
+            self.set_cursor(col, page, 5)?;
             self.write_char(c)?;
+            col += 5;
             // self.set_cursor(col + 5, page)?;
         }
         Ok(())
