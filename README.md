@@ -1,6 +1,6 @@
 # NFP1315-61A
 
-Small library for the NFP1315-61A display. It use an SSD1306 driver, with an I2C communication bus.
+Small library for the NFP1315-61A display. It use an SSD1306 driver, with an I2C communication bus. It aims at being very simple and minimalistic, and is compatible with [esp-hal](https://github.com/esp-rs/esp-hal), [embedded-hal](https://github.com/rust-embedded/embedded-hal), ...
 
 ## Usage
 ```rust
