@@ -104,6 +104,9 @@ where
         // turn display on
         self.send_command(0xAF)?;
 
+        // clear display
+        self.clear()?;
+
         Ok(())
     }
 
