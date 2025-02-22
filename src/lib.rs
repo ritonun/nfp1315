@@ -1,6 +1,6 @@
 #![no_std]
 
-use embedded_hal::i2c::{Error, I2c};
+use embedded_hal::i2c::I2c;
 
 const FONT_5X8: [[u8; 5]; 27] = [
     [0x00, 0x00, 0x00, 0x00, 0x00], // Space
