@@ -11,3 +11,8 @@ loop {
     display.clear();
 }
 ```
+
+## To Do
+- [ ] Wrap text around edges
+- [ ] Add a..z & 0..9 fonts
+- [ ] Easy way to add custom icons
