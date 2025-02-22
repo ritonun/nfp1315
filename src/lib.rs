@@ -112,6 +112,10 @@ where
         self.send_command(0x8D)?;
         self.send_command(0x14)?;
 
+        // set the column addr range from 0 to 127
+        self.send_command(0x20)?;
+        self.send_command(0x01)?;
+
         // turn display on
         self.send_command(0xAF)?;
 
@@ -123,12 +127,6 @@ where
 
     /// Write the same value to all pixel of the display
     fn fill_screen_with_value(&mut self, value: u8) -> Result<(), E> {
-        // send proper command to reset screen
-
-        // set the column addr range from 0 to 127
-        self.send_command(0x20)?;
-        self.send_command(0x01)?;
-
         // Column: addr, start, end
         self.send_command(0x21)?;
         self.send_command(0x00)?;
@@ -162,10 +160,6 @@ where
 
     /// Set the cursor for the start and end of the drawing zone
     fn set_cursor(&mut self, col: u8, page: u8, len: u8) -> Result<(), E> {
-        // set the column addr range from 0 to 127
-        self.send_command(0x20)?;
-        self.send_command(0x01)?;
-
         // set column
         self.send_command(0x21)?;
         self.send_command(col)?;
