@@ -134,12 +134,12 @@ where
     }
 
     pub fn fill(&mut self) -> Result<(), E> {
-        self.fill_screen_with_value(0x00)?;
+        self.fill_screen_with_value(0xFF)?;
         Ok(())
     }
 
     pub fn clear(&mut self) -> Result<(), E> {
-        self.fill_screen_with_value(0xFF)?;
+        self.fill_screen_with_value(0x00)?;
         Ok(())
     }
 
