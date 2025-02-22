@@ -2,6 +2,8 @@
 
 Small library for the NFP1315-61A display. It use an SSD1306 driver, with an I2C communication bus. It aims at being very simple and minimalistic, and is compatible with [esp-hal](https://github.com/esp-rs/esp-hal), [embedded-hal](https://github.com/rust-embedded/embedded-hal), ...
 
+[crates.io/nfp1315](https://crates.io/crates/nfp1315)
+
 ## Display
 This display is 128x64 pixels. To draw text, you need to specify the position by the column and page. There is 8 page, each 8 pixel tall, wich correspond to the size of one character.
 ```
