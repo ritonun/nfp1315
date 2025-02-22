@@ -2,6 +2,12 @@
 name = "nfp1315"
 version = "0.1.0"
 edition = "2021"
+license = "MIT"
+description = "Library for the NFP1315-61A display (I2C SSD1306 driver)"
+repository = "https://github.com/ritonun/nfp1315"
+readme = "README.md"
+keywords = ["NFP1315", "SSD1315", "ESP", "STM"]
+categories = ["no-std", "embedded"]
 
 [dependencies]
 embedded-hal = "1.0.0"

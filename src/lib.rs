@@ -1,3 +1,24 @@
+//! This library provide a default configuration for the SSD1306, adapted to the NFP1315-61A display (128x64)
+//! # Usage
+//! ```
+//! use nfp1315::SSD1306;
+//! // the library is build around embedded-hal, so it is compatible with many µC
+//! // you can create an I2C instance with your board and SSD1306 will take ownership of it
+//! // SSD1306 is not multi-bus
+//! let mut display = SSD1306::new(i2c, 0x3C); // create the SSD1306 struct with the NFP1315-61A address: 0x3C
+//! display.init_display(); // initialise the display
+//!
+//! display.clear(); // clear the display (Black)
+//! display.fill(); // fill the display (White)
+//! display.draw_text(text: &str, col: u8, page: u8); // draw text to the display at the position (col, page)
+//!
+//! // All functions return a `Result<(), Error>
+//! match display.draw_text("Hello World", 50, 0) {
+//!     Ok(_) => {}
+//!     Err(e) => //...
+//! }
+//! ```
+
 #![no_std]
 
 use embedded_hal::i2c::I2c;

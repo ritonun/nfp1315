@@ -28,6 +28,7 @@ use nfp1315::SSD1306; // import the library
 // you can create an I2C instance with your board and SSD1306 will take ownership of it
 // SSD1306 is not multi-bus
 let mut display = SSD1306::new(i2c, 0x3C); // create the SSD1306 struct with the NFP1315-61A address: 0x3C
+display.init_display();
 ```
 
 Functions:
