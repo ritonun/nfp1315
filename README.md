@@ -46,5 +46,4 @@ match display.draw_text("Hello World", 50, 0) {
 ```
 
 ## To Do
-- [ ] Wrap text around edges
 - [ ] Easy way to add custom icons
