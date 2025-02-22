@@ -22,6 +22,8 @@ This display is 128x64 pixels. To draw text, you need to specify the position by
 ## Usage
 Create the SSD1306 struct:
 ```rust
+use nfp1315::SSD1306; // import the library
+
 // the library is build around embedded-hal, so it is compatible with many µC
 // you can create an I2C instance with your board and SSD1306 will take ownership of it
 // SSD1306 is not multi-bus
